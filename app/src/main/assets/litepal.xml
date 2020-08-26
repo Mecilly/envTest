@@ -1,0 +1,9 @@
+<litepal>
+    <dbname value='env_test' />
+    <version value="1" />
+    <list>
+        <mapping class="com.envtest.android.db.Province" />
+        <mapping class="com.envtest.android.db.City" />
+        <mapping class="com.envtest.android.db.County" />
+    </list>
+</litepal>
