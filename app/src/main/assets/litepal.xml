@@ -2,8 +2,8 @@
     <dbname value='env_test' />
     <version value="1" />
     <list>
-        <mapping class="com.envtest.android.db.Province" />
-        <mapping class="com.envtest.android.db.City" />
-        <mapping class="com.envtest.android.db.County" />
+        <mapping class="com.android.cc.mecily.envtest.db.Province" />
+        <mapping class="com.android.cc.mecily.envtest.db.City" />
+        <mapping class="com.android.cc.mecily.envtest.db.County" />
     </list>
 </litepal>
