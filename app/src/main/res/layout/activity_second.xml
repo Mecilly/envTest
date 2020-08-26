@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.android.cc.mecily.envtest.SecondActivity">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/shutScreen"
+            android:layout_width="wrap_content"
+            android:text="截屏"
+            android:layout_height="50dp" />
+        <Button
+            android:id="@+id/loc"
+            android:text="定位"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp" />
+
+        <Button
+            android:id="@+id/turnTo"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="下一页" />
+    </LinearLayout>
+
+    <com.tianditu.android.maps.MapView
+
+        android:id ="@+id/mapview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:apiKey="0e063a5e3e1c51713c1cec80af6f3b1c"
+        android:clickable="true" />
+</LinearLayout>
