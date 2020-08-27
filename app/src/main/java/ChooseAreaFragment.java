@@ -1,5 +1,6 @@
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -20,6 +21,7 @@ import android.view.ViewGroup;
 
 
 import com.android.cc.mecily.envtest.R;
+import com.android.cc.mecily.envtest.WeatherActivity;
 import com.android.cc.mecily.envtest.db.City;
 import com.android.cc.mecily.envtest.db.County;
 import com.android.cc.mecily.envtest.db.Province;
@@ -84,6 +86,12 @@ public class ChooseAreaFragment extends Fragment {
                     selectedCity = cityList.get(position);
                     queryCounties();
 
+                }else if (currentLevel == LEVEL_COUNTY){
+                    String weatherId = countyList.get(position).getWeatherId();
+                    Intent intent = new Intent(getActivity(), WeatherActivity.class);
+                    intent.putExtra("weather_id", weatherId);
+                    startActivity(intent);
+                    getActivity().finish();
                 }
             }
         });

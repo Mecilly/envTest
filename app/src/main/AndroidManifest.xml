@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.android.cc.mecily.envtest">
+
     <!-- 用于进行网络定位 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <!-- 用于访问GPS定位 -->
@@ -35,6 +36,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="a64e4fb6adc9b497ef34944f9ecc1207">
@@ -43,11 +45,12 @@
         <meta-data
             android:name="com.tianditu.apikey"
             android:value="0e063a5e3e1c51713c1cec80af6f3b1c" />
-        <service android:name="com.amap.api.location.APSService" />
-        <activity android:name=".SecondActivity">
 
-        </activity>
-        <activity android:name=".ThirdActivity"></activity>
+        <service android:name="com.amap.api.location.APSService" />
+
+        <activity android:name=".SecondActivity"></activity>
+        <activity android:name=".ThirdActivity" />
+        <activity android:name=".WeatherActivity"></activity>
     </application>
 
 </manifest>
