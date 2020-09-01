@@ -48,9 +48,18 @@
 
         <service android:name="com.amap.api.location.APSService" />
 
-        <activity android:name=".SecondActivity"></activity>
+        <activity android:name=".SecondActivity" />
         <activity android:name=".ThirdActivity" />
-        <activity android:name=".WeatherActivity"></activity>
+        <activity android:name=".WeatherActivity" />
+
+        <service
+            android:name=".service.AutoUpdateService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".HeWeather_cc" />
+        <activity android:name=".Hefeng_sdk" />
+        <activity android:name=".Dianbo"></activity>
     </application>
 
 </manifest>

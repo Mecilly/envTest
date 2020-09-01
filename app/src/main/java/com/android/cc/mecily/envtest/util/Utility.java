@@ -1,6 +1,7 @@
 package com.android.cc.mecily.envtest.util;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.android.cc.mecily.envtest.db.City;
 import com.android.cc.mecily.envtest.db.County;
@@ -23,6 +24,7 @@ public class Utility {
             JSONObject jsonObject = new JSONObject(response);
             JSONArray jsonArray = jsonObject.getJSONArray("HeWeather");
             String weatherContent = jsonArray.getJSONObject(0).toString();
+            Log.d("utility:", weatherContent);
             return new Gson().fromJson(weatherContent, Weather.class);
 
         }catch (Exception e){

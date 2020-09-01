@@ -1,5 +1,6 @@
 package com.android.cc.mecily.envtest;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v4.view.GravityCompat;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import com.android.cc.mecily.envtest.gson.Forecast;
 import com.android.cc.mecily.envtest.gson.Weather;
+import com.android.cc.mecily.envtest.service.AutoUpdateService;
 import com.android.cc.mecily.envtest.util.HttpUtil;
 import com.android.cc.mecily.envtest.util.Utility;
 
@@ -84,6 +86,7 @@ public class WeatherActivity extends AppCompatActivity {
             weatherId = getIntent().getStringExtra("weather_id");
             weatherLayout.setVisibility(View.INVISIBLE);
             requestWeather(weatherId);
+
         }
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener(){
             @Override
@@ -94,8 +97,9 @@ public class WeatherActivity extends AppCompatActivity {
     }
 
     public void requestWeather(final String weatherId){
+        //首先这里需要改成api的正确格式，其中城市的id已经在上一步成功获得了，这里可以直接导入
         String weatherUrl = "http://guolin.tech/api/weather?cityid=" +
-                weatherId + "&key=56becb10320f42c782d02e786f6035dd";
+                weatherId + "&key=3003cd49f3d04f58bf18d211a39da117";
         HttpUtil.sendOkHttpRequest(weatherUrl, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -123,6 +127,7 @@ public class WeatherActivity extends AppCompatActivity {
                             editor.putString("weather", responseText);
                             editor.apply();
                             showWeatherInfo(weather);
+
                         }else{
                             Toast.makeText(WeatherActivity.this, "获取天气信息失败", Toast.LENGTH_SHORT).show();
 
@@ -171,5 +176,8 @@ public class WeatherActivity extends AppCompatActivity {
         carWashText.setText(carWash);
         sportText.setText(sport);
         weatherLayout.setVisibility(View.VISIBLE);
+        //下面两句是添加动态更新服务的，但是我还没想好放在哪里。
+        //Intent intent = new Intent(WeatherActivity.this, AutoUpdateService.class);
+        //startActivity(intent);
     }
 }

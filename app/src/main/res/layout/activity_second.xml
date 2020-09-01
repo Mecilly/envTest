@@ -26,7 +26,12 @@
             android:id="@+id/turnTo"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:text="下一页" />
+            android:text="test" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:id="@+id/hefeng"
+            android:text="和风数据"/>
     </LinearLayout>
 
     <com.tianditu.android.maps.MapView

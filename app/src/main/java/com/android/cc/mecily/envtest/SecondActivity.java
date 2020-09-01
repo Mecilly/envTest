@@ -64,6 +64,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
     private Button btn2;
     private Button btn3;
     private String path;
+    private Button btn4;
 
 
     //在API23+以上，不仅要在AndroidManifest.xml里面添加权限 还要在JAVA代码中请求权限：
@@ -87,16 +88,18 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         Intent intent = getIntent();
         lat = intent.getDoubleExtra("lat",116.0);
         lon = intent.getDoubleExtra("lon", 39.0);
-        Toast.makeText(this, "lat:"+lat+"lon:"+lon, Toast.LENGTH_SHORT).show();
+        Toast.makeText(SecondActivity.this, "lat:"+lat+"lon:"+lon, Toast.LENGTH_SHORT).show();
         btn = (Button)findViewById(R.id.shutScreen);
         btn2 = (Button)findViewById(R.id.loc);
         btn3 = (Button)findViewById(R.id.turnTo);
+        btn4 = (Button)findViewById(R.id.hefeng);
 
         init();
 
         btn.setOnClickListener(this);
         btn2.setOnClickListener(this);
         btn3.setOnClickListener(this);
+        btn4.setOnClickListener(this);
 
 
     }
@@ -155,16 +158,26 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
 //动画移动到当前位置
                 MapController mapController=mapView.getController();
                 mapController.animateTo(mPoint);
-                Log.d("MainActivity", "lat:"+mPoint.getLatitudeE6());
-                Log.d("MainActivity", "lon:"+mPoint.getLongitudeE6());
+                Log.d("MainActivity", "lat:"+(double)mPoint.getLatitudeE6()/1000000);
+
+                Log.d("MainActivity", "lon:"+(double)mPoint.getLongitudeE6()/1000000);
+                lon = (double)mPoint.getLongitudeE6()/1000000;
+                lat = (double)mPoint.getLatitudeE6()/1000000;
                 TGeoDecode tGeoDecode = new TGeoDecode(new OnGeoResultListener());
                 tGeoDecode.search(mPoint);
                 break;
             case R.id.turnTo:
-                Toast.makeText(this, "click the button turnto", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(SecondActivity.this, ThirdActivity.class);
-                startActivity(intent);
 
+                //Intent intent = new Intent(SecondActivity.this, ThirdActivity.class);
+                //startActivity(intent);
+                Toast.makeText(SecondActivity.this, "已弃置", Toast.LENGTH_SHORT).show();
+
+                break;
+            case R.id.hefeng:
+                Intent intent2 = new Intent(SecondActivity.this, HeWeather_cc.class);
+                String locString = ""+lat+","+lon;
+                intent2.putExtra("loc",locString);
+                startActivity(intent2);
                 break;
             default:
                 break;
@@ -202,10 +215,12 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
             int mapKey = entry.getKey();
             int mapValue = entry.getValue();
             double dens = (double)mapValue/(height*width*0.6);
-            density = dens;
+            //density = dens;
             if (mapKey == buildingV) {
                 Log.d("MainActivity:", "value:" + mapValue + "建筑密度为：" + dens);
+                density = dens;
             }
+
         }
         return density;
     }
